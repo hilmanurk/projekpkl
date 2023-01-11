@@ -28,7 +28,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/data_sekolah/create', [AdminController::class, 'DataSekolahCreate'])->name('admin.data_sekolah.create');
     Route::post('/data_sekolah', [AdminController::class, 'DataSekolahStore'])->name('admin.data_sekolah.store');
     Route::get('/data_sekolah/edit', [AdminController::class, 'DataSekolahEdit'])->name('admin.data_sekolah.edit');
-    Route::put('/data_sekolah', [AdminController::class, 'DataSekolahUpdate'])->name('admin.data_sekolah.update');
+    Route::put('/data_sekolah', [AdminController::class, 'DataSekolahDelete'])->name('admin.data_sekolah.update');
     Route::get('/kode_rekening', [AdminController::class, 'KodeRekening'])->name('admin.kode_rekening');
     Route::get('/kode_rekening/create', [AdminController::class, 'KodeRekeningCreate'])->name('admin.kode_rekening.create');
 });

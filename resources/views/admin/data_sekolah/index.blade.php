@@ -14,7 +14,7 @@
 
     @if(Session::has('error'))
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>{{ session::get('error')}}</strong> You should check in on some of those fields below.
+        <strong>{{ session::get('error')}}</strong>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -31,7 +31,14 @@
                         <h3>Data Sekolah Wilayah Semarang</h3>
                         <a href="{{ url('admin/data_sekolah/create') }}" class="btn btn-primary float-end">Tambah Sekolah</a>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body"><!-- FORM PENCARIAN -->
+                        <div class="pb-3">
+                            <form class="d-inline-flex bd-highlight" action="{{ url('admin/data_sekolah') }}" method="get">
+                                <input class="form-control me-1" type="search" name="katakunci" value="{{ Request::get('katakunci') }}" placeholder="Cari nama sekolah ..." aria-label="Search">
+                                <button class="btn btn-secondary" type="submit">Cari</button>
+                            </form>
+                        </div>
+
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead class="text-center">
@@ -64,7 +71,8 @@
                                             <form onsubmit="return confirm('Yakin akan menghapus data?')" class="d-inline" method="post" action="{{url('admin/data_Sekolah/'.$row->nisn)}}">
                                                 @csrf
                                                 @method('DELETE')
-                                                <a href="{{ url('admin/data_sekolah/'.$row->nisn.'/edit') }}" class="btn btn-danger btn-sm">Hapus</a>
+                                                <button class="btn btn-danger btn-sm">Hapus</button>
+                                                <!-- <a href="{{ url('admin/data_sekolah/'.$row->nisn.'/') }}" class="btn btn-danger btn-sm">Hapus</a> -->
                                             </form>
                                         </td>
                                     </tr>

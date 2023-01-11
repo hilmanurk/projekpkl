@@ -8,8 +8,7 @@ use App\Models\Admin;
 use App\Models\DataSekolah;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
-use Illuminate\Contracts\Session\Session;
-use Illuminate\Support\Facades\Session as FacadesSession;
+use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
@@ -19,6 +18,7 @@ class AdminController extends Controller
 
     public function Dashboard(){
         return view('admin.index');
+        
     } // end method
 
     public function Login(Request $request){
@@ -53,9 +53,18 @@ class AdminController extends Controller
         return redirect()->route('admin.data_sekolah')->with('error','Data Sekolah Added Successfully');
     } 
 
-    public function DataSekolah(){
-        $data = DataSekolah::orderBy('nama', 'desc')->paginate(1);
-        return view('admin.data_sekolah.index')->with('data',$data);
+    public function DataSekolah(Request $request){
+        $katakunci = $request->katakunci;
+        $jumlahbaris = 3;
+        if (strlen($katakunci)) {
+            $sekolah = DataSekolah::where('nama', 'like', "%$katakunci%")
+                ->orWhere('nama', 'like', "%$katakunci%")
+                ->orWhere('nisn', 'like', "%$katakunci%")
+                ->paginate($jumlahbaris);
+        } else {
+            $sekolah = DataSekolah::orderBy('nama', 'asc')->paginate($jumlahbaris);
+        }
+        return view('admin.data_sekolah.index')->with('data', $sekolah);
     }
 
     public function DataSekolahCreate(){
@@ -70,12 +79,12 @@ class AdminController extends Controller
     } 
 
     public function DataSekolahStore(Request $request){
-        FacadesSession::flash('kabupaten/kota',$request->kabkota);
-        FacadesSession::flash('nisn',$request->nisn);
-        FacadesSession::flash('nama',$request->nama);
-        FacadesSession::flash('jenjang',$request->jenjang);
-        FacadesSession::flash('email',$request->email);
-        FacadesSession::flash('password',$request->password);
+        Session::flash('kabupaten/kota',$request->kabkota);
+        Session::flash('nisn',$request->nisn);
+        Session::flash('nama',$request->nama);
+        Session::flash('jenjang',$request->jenjang);
+        Session::flash('email',$request->email);
+        Session::flash('password',$request->password);
 
         $sekolah = [
             'cabdin'=>$request->cabdin,
@@ -102,7 +111,11 @@ class AdminController extends Controller
             'password' => 'required',
         ], [
             'nama.required' => 'Nama wajib diisi',
-            'jurusan.required' => 'Jurusan wajib diisi',
+            'nisn.required' => 'Jurusan wajib diisi',
+            'nama.required' => 'Nama wajib diisi',
+            'jenjang.required' => 'Nama wajib diisi',
+            'email.required' => 'Nama wajib diisi',
+            'password.required' => 'Nama wajib diisi',
         ]);
         $sekolah = [
             'cabdin'=>$request->cabdin,
@@ -140,23 +153,22 @@ class AdminController extends Controller
     } 
 
     public function KodeRekeningStore(Request $request){
-        FacadesSession::flash('kabupaten/kota',$request->kabkota);
-        FacadesSession::flash('nisn',$request->nisn);
-        FacadesSession::flash('nama',$request->nama);
-        FacadesSession::flash('jenjang',$request->jenjang);
-        FacadesSession::flash('email',$request->email);
-        FacadesSession::flash('password',$request->password);
+        Session::flash('kabupaten/kota',$request->kabkota);
+        Session::flash('nisn',$request->nisn);
+        Session::flash('nama',$request->nama);
+        Session::flash('jenjang',$request->jenjang);
+        Session::flash('',$request->email);
+        Session::flash('password',$request->password);
 
         $sekolah = [
-            'cabdin'=>$request->cabdin,
             'kabupaten/kota'=>$request->kabkota,
             'nisn'=>$request->nisn,
             'nama'=>$request->nama,
             'jenjang'=>$request->jenjang,
-            'email'=>$request->email,
-            'password'=>$request->password
+            'kode_rekening'=>$request->kode_rekening,
+            'keterangan'=>$request->keterangan
         ];
         DataSekolah::create($sekolah);
-        return redirect()->to('admin.data_sekolah')->with('success','Data Sekolah Added Successfully');
+        return redirect()->to('admin.kode_rekening')->with('success','Data Sekolah Added Successfully');
     }  
 }
