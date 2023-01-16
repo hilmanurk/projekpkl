@@ -21,6 +21,8 @@
     </div>
     @endif
 
+
+
     <div class="middle_content_wrapper">
         <div class="row">
             <div class="col-md-12">
@@ -29,8 +31,7 @@
                         <h3>Data Sekolah Wilayah Semarang</h3>
                         <a href="{{ url('admin/data_sekolah/create') }}" class="btn btn-primary float-end">Tambah Sekolah</a>
                     </div>
-                    <div class="card-body">
-                        <!-- FORM PENCARIAN -->
+                    <div class="card-body"><!-- FORM PENCARIAN -->
                         <div class="pb-3">
                             <form class="d-inline-flex bd-highlight" action="{{ url('admin/data_sekolah') }}" method="get">
                                 <input class="form-control me-1" type="search" name="katakunci" value="{{ Request::get('katakunci') }}" placeholder="Cari nama sekolah ..." aria-label="Search">
@@ -58,13 +59,13 @@
                                     @foreach ($data as $row)
                                     <tr>
                                         <td class="text-center">{{ $i }}</td>
-                                        <td class="text-center">{{ $row['cabdin'] }}</td>
-                                        <td class="text-center">{{ $row['kabupaten/kota'] }}</td>
-                                        <td class="text-center">{{ $row['nisn'] }}</td>
-                                        <td class="text-center">{{ $row['nama'] }}</td>
-                                        <td class="text-center">{{ $row['jenjang'] }}</td>
-                                        <td>{{ $row['email'] }}</td>
-                                        <td>{{ $row['password'] }}</td>
+                                        <td class="text-center">{{ $row->cabdin }}</td>
+                                        <td class="text-center">{{ $row->kabkota }}</td>
+                                        <td class="text-center">{{ $row->nisn }}</td>
+                                        <td class="text-center">{{ $row->nama }}</td>
+                                        <td class="text-center">{{ $row->jenjang }}</td>
+                                        <td>{{ $row->email }}</td>
+                                        <td>{{ $row->password }}</td>
                                         <td>
                                             <a href="{{ url('admin/data_sekolah/'.$row->nisn.'/edit') }}" class="btn btn-warning btn-sm">Edit</a>
                                             <form onsubmit="return confirm('Yakin akan menghapus data?')" class="d-inline" method="post" action="{{url('admin/data_Sekolah/'.$row->nisn)}}">
