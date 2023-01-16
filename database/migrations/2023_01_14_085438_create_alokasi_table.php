@@ -13,16 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('bop', function (Blueprint $table) {
+        Schema::create('alokasi', function (Blueprint $table) {
             $table->id();
             $table->string('cabdin')->default('CABDIN 1');
             $table->string('kabupaten/kota');
             $table->tinyInteger('nisn');
             $table->string('nama');
             $table->string('jenjang');
-            $table->string('alokasi_murni');
-            $table->string('alokasi_tanpaSilpa');
-            $table->string('alokasi_silpa');
+            $table->integer('tahun');
+            $table->float('alokasi_murni');
+            $table->float('alokasi_tanpaSilpa');
+            $table->float('alokasi_silpa');
             $table->timestamps();
         });
     }
@@ -34,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bop');
+        Schema::dropIfExists('alokasi');
     }
 };

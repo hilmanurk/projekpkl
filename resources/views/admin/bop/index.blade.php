@@ -26,12 +26,12 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3>Data BOP SMA Wilayah Semarang</h3>
+                        <h3>Data BOP Sekolah Wilayah Semarang</h3>
                     </div>
                     <div class="card-body">
                         <!-- FORM PENCARIAN -->
                         <div class="pb-3">
-                            <form class="d-inline-flex bd-highlight" action="{{ url('admin/bop/bop_sma') }}" method="get">
+                            <form class="d-inline-flex bd-highlight" action="{{ url('admin/bop') }}" method="get">
                                 <input class="form-control me-1" type="search" name="katakunci" value="{{ Request::get('katakunci') }}" placeholder="Cari nama sekolah ..." aria-label="Search">
                                 <button class="btn btn-secondary" type="submit">Cari</button>
                             </form>
@@ -46,8 +46,9 @@
                                         <th>Nama</th>
                                         <th>Jenjang</th>
                                         <th>Kode Rekening</th>
-                                        <th>Keterangan</th>
-                                        <th>Aksi</th>
+                                        <th>Alokasi Murni</th>
+                                        <th>Alokasi Tanpa Silpa</th>
+                                        <th>Alokasi Silpa</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -61,6 +62,9 @@
                                         <td class="text-center">{{ $row['jenjang'] }}</td>
                                         <td class="text-center">{{ $row['kode_rekening'] }}</td>
                                         <td>{{ $row['keterangan'] }}</td>
+                                        <td>{{ $row['alokasi_murni'] }}</td>
+                                        <td>{{ $row['alokasi_tanpaSilpa'] }}</td>
+                                        <td>{{ $row['alokasi_silpa'] }}</td>
                                     </tr>
                                     <?php $i++ ?>
                                     @endforeach

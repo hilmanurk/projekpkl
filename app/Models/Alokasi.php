@@ -5,19 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DataSekolah extends Model
+class Alokasi extends Model
 {
     use HasFactory;
-
-    protected $table = 'data_sekolah';
+    protected $table = 'alokasi';
     protected $fillable = [
         'cabdin',
         'kabkota',
         'nisn',
         'nama',
         'jenjang',
-        'email',
-        'password'
+        'tahun',
+        'alokasi_murni',
+        'alokasi_tanpaSilpa',
+        'alokasi_silpa'
     ];
-    public $timestamps=false;
 }

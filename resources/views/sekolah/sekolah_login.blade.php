@@ -48,7 +48,7 @@
                         @endif
 
 
-                        <form action="{{ route('admin.login') }} " class="d-block" method="post">
+                        <form action="{{ route('sekolah.login') }} " class="d-block" method="post">
                             @csrf
                             <div class="form-group icon_parent">
                                 <label for="password">Email</label>
@@ -69,7 +69,7 @@
                                 </label>
                             </div>
                             <div class="form-group">
-                                <a class="registration" href="{{ route('admin.register')}} ">Create new account</a><br>
+                                <a class="registration" href="{{ route('sekolah.register')}} ">Create new account</a><br>
                                 <a href=" " class="text-white">I forgot my password</a>
 
                                 <button type="submit" class="btn btn-blue">Login</button>

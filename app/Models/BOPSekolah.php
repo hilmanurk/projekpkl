@@ -14,8 +14,6 @@ class BOPSekolah extends Model
         'kabupaten/kota',
         'nisn',
         'nama',
-        'jenjang',
-        'email',
-        'password'
+        'jenjang'
     ];
 }

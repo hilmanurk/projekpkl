@@ -1,9 +1,9 @@
 <!-- header area -->
-@include('/profile.header')
+@include('/sekolah.header')
 <!-- / header area -->
 
 <!-- sidebar area -->
-@include('/profile.sidebar')
+@include('/sekolah.sidebar')
 <!-- /sidebar Area-->
 
 <div class="content_wrapper">

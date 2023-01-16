@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('bop', function (Blueprint $table) {
+        Schema::create('bop_sma', function (Blueprint $table) {
             $table->id();
             $table->string('cabdin')->default('CABDIN 1');
             $table->string('kabupaten/kota');
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bop');
+        Schema::dropIfExists('bop_sma');
     }
 };
