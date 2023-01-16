@@ -12,7 +12,7 @@ class DataSekolah extends Model
     protected $table = 'data_sekolah';
     protected $fillable = [
         'cabdin',
-        'kabkota',
+        'kabupaten/kota',
         'nisn',
         'nama',
         'jenjang',

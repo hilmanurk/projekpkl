@@ -1,9 +1,11 @@
+@section('admin')
+
 <!-- header area -->
-@include('/profile.header')
+@include('admin.header')
 <!-- / header area -->
 
 <!-- sidebar area -->
-@include('/profile.sidebar')
+@include('admin.sidebar')
 <!-- /sidebar Area-->
 
 <div class="content_wrapper">
@@ -17,6 +19,9 @@
         </button>
     </div>
     @endif
+
+    <!-- <h4>Login Admin Name : {{ Auth::guard('admin')->user()->name }}</h4>
+    <h4>Login Admin Email : {{ Auth::guard('admin')->user()->email }}</h4> -->
 
     <div class="middle_content_wrapper">
         <div class="d-sm-flex align-items-center justify-content-between mb-4 text-bold">
@@ -154,3 +159,5 @@
 
     <!-- footer area -->
     <!-- / footer area -->
+
+    @endsection

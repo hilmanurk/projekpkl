@@ -16,6 +16,6 @@ class KodeRekening extends Model
         'nama',
         'jenjang',
         'kode_rekening',
-        'keteranganh'
+        'keterangan'
     ];
 }

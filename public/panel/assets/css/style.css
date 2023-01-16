@@ -215,7 +215,7 @@ section{
   width:100%;
   background-color: #0074E8;
   overflow:visible;
-  height:64px;
+  height:56px;
   position: fixed;
   top:0px;
   left:0px;
@@ -263,7 +263,7 @@ section{
 .header_area .sidebar_logo .logo2{
   display: none;
   transition: .5s all ease;
-  width: 38px;
+  width: 46px;
   height:46px;
 }
 .wrapper_active .header_area .sidebar_logo .logo2{
@@ -851,7 +851,7 @@ footer .developby a:hover{
   position: absolute;
   top:50%;
   left:10px;
-  float:right;
+  float-right;
   transform: translatey(-50%);
   color:#000;
   opacity: .5;
@@ -860,7 +860,7 @@ footer .developby a:hover{
   position: absolute;
   top:50%;
   right:10px;
-  float:right;
+  float-right;
   transform: translatey(-50%);
   color:#000;
   opacity: .5;
@@ -933,12 +933,6 @@ footer .developby a:hover{
 }
 .login_page{
   margin:0px 0px;
-}
-.login_page .logo img {
-  max-height: 125px;
-}
-.registration_page .logo img {
-  max-height: 125px;
 }
 .center_content{
   background-color: #0074E8;
