@@ -26,58 +26,52 @@
 <body id="page-top">
     <!-- preloader -->
     <div class="preloader">
-        <img src="{{ asset('panel/assets/images/preloader.gif') }}" alt="">
+        <img src="{{asset('panel/assets/images/preloader.gif')}}" alt="">
     </div>
 
-    <!-- wrapper -->
+
     <div class="wrapper without_header_sidebar">
         <!-- contnet wrapper -->
         <div class="content_wrapper">
             <!-- page content -->
-            <div class="login_page center_container">
+            <div class="registration_page center_container">
                 <div class="logo">
                     <img src="{{ asset('panel/assets/images/logo.png') }}" alt="" class="img-fluid">
                     <div class="center_content">
-                        @if(Session::has('error'))
-                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                            <strong>{{ session::get('error')}}</strong>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        @endif
-
-
-                        <form action="{{ route('admin.login') }} " class="d-block" method="post">
+                        <form action="{{(route('sekolah.register.create'))}}" method="post">
                             @csrf
                             <div class="form-group icon_parent">
-                                <label for="password">Email</label>
-                                <input type="email" class="form-control" name="email" placeholder="Email Address">
-                                <span class="icon_soon_bottom_right"><i class="fas fa-envelope"></i></span>
+                                <label for="uname">Username</label>
+                                <input type="text" class="form-control" name="name" placeholder="Full Name">
 
+                                <span class="icon_soon_bottom_right"><i class="fas fa-user"></i></span>
+                            </div>
+                            <div class="form-group icon_parent">
+                                <label for="email">E-mail</label>
+                                <input type="email" class="form-control" name="email" placeholder="Email Address">
+
+
+                                <span class="icon_soon_bottom_right"><i class="fas fa-envelope"></i></span>
                             </div>
                             <div class="form-group icon_parent">
                                 <label for="password">Password</label>
                                 <input type="password" class="form-control" name="password" placeholder="Password">
 
+
+                                <span class="icon_soon_bottom_right"><i class="fas fa-unlock"></i></span>
+                            </div>
+                            <div class="form-group icon_parent">
+                                <label for="rtpassword">Re-type Password</label>
+                                <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password">
                                 <span class="icon_soon_bottom_right"><i class="fas fa-unlock"></i></span>
                             </div>
                             <div class="form-group">
-                                <label class="chech_container">Remember me
-                                    <input type="checkbox" name="remember" id="remember">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <a class="registration" href="{{ route('admin.register')}} ">Create new account</a><br>
-                                <a href=" " class="text-white">I forgot my password</a>
-
-                                <button type="submit" class="btn btn-blue">Login</button>
+                                <a class="registration" href=" ">Already have an account</a><br>
+                                <button type="submit" class="btn btn-blue">Signup</button>
                             </div>
                         </form>
-
                         <div class="footer">
-                            <p>Copyright &copy; 2023 <a href="https://easylearningbd.com/">amona BOP</a>. All rights reserved.</p>
+                            <p>Copyright &copy; 2020 <a href="https://easylearningbd.com/">easy Learning</a>. All rights reserved.</p>
                         </div>
                     </div>
                 </div>

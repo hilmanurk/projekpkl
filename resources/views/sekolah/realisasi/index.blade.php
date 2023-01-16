@@ -1,12 +1,12 @@
-@extends('admin.admin_master')
-@section('admin')
+@extends('sekolah.sekolah_master')
+@section('sekolah')
 
 <!-- header area -->
-@include('admin.header')
+@include('sekolah.header')
 <!-- / header area -->
 
 <!-- sidebar area -->
-@include('admin.sidebar')
+@include('sekolah.sidebar')
 <!-- /sidebar Area-->
 
 <div class="content_wrapper">
@@ -26,30 +26,40 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3>Data Sekolah Wilayah Semarang</h3>
-                        <a href="{{ url('admin/data_sekolah/create') }}" class="btn btn-primary float-end">Tambah Sekolah</a>
+                        <h3>Data Realisasi Kode Rekening</h3>
+                        <a href="{{ url('sekolah/realisasi/create') }}" class="btn btn-primary float-end">Tambah Data</a>
                     </div>
                     <div class="card-body">
                         <!-- FORM PENCARIAN -->
                         <div class="pb-3">
-                            <form class="d-inline-flex bd-highlight" action="{{ url('admin/data_sekolah') }}" method="get">
-                                <input class="form-control me-1" type="search" name="katakunci" value="{{ Request::get('katakunci') }}" placeholder="Cari nama sekolah ..." aria-label="Search">
+                            <form class="d-inline-flex bd-highlight" action="{{ url('sekolah/realisasi') }}" method="get">
+                                <input class="form-control me-1" type="search" name="katakunci" value="{{ Request::get('katakunci') }}" placeholder="Cari tahun ..." aria-label="Search">
                                 <button class="btn btn-secondary" type="submit">Cari</button>
                             </form>
                         </div>
-
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead class="text-center">
                                     <tr>
                                         <th>No</th>
-                                        <th>Cabdin</th>
-                                        <th>Kabupaten/Kota</th>
                                         <th>NISN</th>
                                         <th>Nama</th>
-                                        <th>Jenjang</th>
-                                        <th>Email</th>
-                                        <th>Password</th>
+                                        <th>Tahun</th>
+                                        <th>Pagu Anggaran Perubahan</th>
+                                        <th>Rencana TW I</th>
+                                        <th>Realisasi TW I</th>
+                                        <th>Selisih TW I</th>
+                                        <th>Rencana TW II</th>
+                                        <th>Realisasi TW II</th>
+                                        <th>Selisih TW II</th>
+                                        <th>Rencana TW III</th>
+                                        <th>Realisasi TW III</th>
+                                        <th>Selisih TW III</th>
+                                        <th>Rencana TW IV</th>
+                                        <th>Realisasi TW IV</th>
+                                        <th>Selisih TW IV</th>
+                                        <!-- <th>Saldo</th>
+                                        <th>Cek</th> -->
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -58,16 +68,25 @@
                                     @foreach ($data as $row)
                                     <tr>
                                         <td class="text-center">{{ $i }}</td>
-                                        <td class="text-center">{{ $row['cabdin'] }}</td>
-                                        <td class="text-center">{{ $row['kabupaten/kota'] }}</td>
                                         <td class="text-center">{{ $row['nisn'] }}</td>
                                         <td class="text-center">{{ $row['nama'] }}</td>
-                                        <td class="text-center">{{ $row['jenjang'] }}</td>
-                                        <td>{{ $row['email'] }}</td>
-                                        <td>{{ $row['password'] }}</td>
+                                        <td class="text-center">{{ $row['tahun'] }}</td>
+                                        <td>{{ $row['pagu_anggaran'] }}</td>
+                                        <td>{{ $row['rencana_tw1'] }}</td>
+                                        <td>{{ $row['realisasi_tw1'] }}</td>
+                                        <td>{{ $row['selisih_tw1'] }}</td>
+                                        <td>{{ $row['rencana_tw2'] }}</td>
+                                        <td>{{ $row['realisasi_tw2'] }}</td>
+                                        <td>{{ $row['selisih_tw2'] }}</td>
+                                        <td>{{ $row['rencana_tw3'] }}</td>
+                                        <td>{{ $row['realisasi_tw3'] }}</td>
+                                        <td>{{ $row['selisih_tw3'] }}</td>
+                                        <td>{{ $row['rencana_tw4'] }}</td>
+                                        <td>{{ $row['realisasi_tw4'] }}</td>
+                                        <td>{{ $row['selisih_tw4'] }}</td>
                                         <td>
-                                            <a href="{{ url('admin/data_sekolah/'.$row->nisn.'/edit') }}" class="btn btn-warning btn-sm">Edit</a>
-                                            <form onsubmit="return confirm('Yakin akan menghapus data?')" class="d-inline" method="post" action="{{url('admin/data_Sekolah/'.$row->nisn)}}">
+                                            <a href="{{ url('sekolah/realisasi/'.$row->tahun.'/edit') }}" class="btn btn-warning btn-sm">Edit</a>
+                                            <form onsubmit="return confirm('Yakin akan menghapus data?')" class="d-inline" method="post" action="{{url('sekolah/realisasi/'.$row->tahun)}}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger btn-sm">Hapus</button>

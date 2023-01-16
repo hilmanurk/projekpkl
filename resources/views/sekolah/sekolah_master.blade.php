@@ -29,7 +29,7 @@
         <!-- wrapper -->
         <div class="wrapper">
          
-            @yield('admin')
+            @yield('sekolah')
 
         </div><!--/ wrapper -->
 

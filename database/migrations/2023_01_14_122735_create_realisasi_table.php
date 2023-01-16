@@ -13,16 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('bop', function (Blueprint $table) {
+        Schema::create('realisasi', function (Blueprint $table) {
             $table->id();
-            $table->string('cabdin')->default('CABDIN 1');
-            $table->string('kabupaten/kota');
             $table->tinyInteger('nisn');
             $table->string('nama');
-            $table->string('jenjang');
-            $table->string('alokasi_murni');
-            $table->string('alokasi_tanpaSilpa');
-            $table->string('alokasi_silpa');
+            $table->integer('tahun');
+            $table->float('pagu_anggaran');
+            $table->float('rencana_tw1');
+            $table->float('realisasi_tw1');
+            $table->float('rencana_tw2');
+            $table->float('realisasi_tw2');
+            $table->float('rencana_tw3');
+            $table->float('realisasi_tw3');
+            $table->float('rencana_tw4');
+            $table->float('realisasi_tw4');
             $table->timestamps();
         });
     }
@@ -34,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bop');
+        Schema::dropIfExists('realisasi');
     }
 };
